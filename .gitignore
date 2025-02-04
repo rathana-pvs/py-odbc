@@ -1,0 +1,64 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+*.venv
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Install logs
+installer.log
+
+# Unit test / coverage reports
+.coverage
+.tox/
+.nosetests/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+
+# Flask stuff
+instance/
+*.sqlite
+
+# Scrapy stuff
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyInstaller
+*.spec
+
+# mypy
+.mypy_cache/
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# MacOS & Linux system files
+.DS_Store
+*.swp
+report.html
+assets/
+
