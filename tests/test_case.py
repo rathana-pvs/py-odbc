@@ -4,10 +4,10 @@ import random
 import pyodbc
 import pytest
 
-from connection import connect, close_session
+from connection import connect
 
 table_name = "test_table_python"
-
+conn_str = "driver={CUBRID Driver};server=localhost;port=33000;uid=dba;pwd=;db_name=demodb;"
 
 
 @pytest.mark.order(1)
@@ -83,3 +83,41 @@ def test_rollback():
     cursor.close()
     conn.close()
 
+
+import pytest
+
+
+
+
+@pytest.mark.order(6)
+def test_fetchall():
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute(f'select * from {table_name}')
+    result = cursor.fetchall()
+    print(f'query: select * from {table_name}')
+    print("size: %d" % len(result))
+    assert result is not None
+    assert len(result) > 0
+
+@pytest.mark.order(7)
+def test_fetchmany():
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute(f'select * from {table_name}')
+    result = cursor.fetchmany(3)
+    print(f'query: select * from {table_name}, size of fetchmany(10)')
+    assert len(result) == 3
+    for index, row in enumerate(result):
+        print("index: {}, row: {}".format(index, row))
+
+@pytest.mark.order(8)
+def test_fetchone():
+    conn = connect()
+    cursor = conn.cursor()
+    cursor.execute('select * from game')
+    result = cursor.fetchone()
+    print(f'select * from {table_name}')
+    print("result: %s", result)
+    cursor.close()
+    assert result is not None
